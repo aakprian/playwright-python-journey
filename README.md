@@ -34,5 +34,5 @@
 ## 📊 Stats
 - **Total Tests Written**: 1
 - **Lines of Code**: 35
-- **Hours Invested**: 2
+- **Hours Invested**: 6
 
