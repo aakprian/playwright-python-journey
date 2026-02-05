@@ -29,7 +29,7 @@
 - ⏳ GitLab CI/CD Pipeline
 - ⏳ Test Reporting
   
-- ### pytest Fixtures
+### pytest Fixtures
 - ✅ Eliminate code repetition
 - ✅ Guaranteed cleanup with yield
 - ✅ Different scopes for different needs
