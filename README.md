@@ -28,11 +28,28 @@
 - ⏳ API Testing
 - ⏳ GitLab CI/CD Pipeline
 - ⏳ Test Reporting
+  
+- ### pytest Fixtures
+- ✅ Eliminate code repetition
+- ✅ Guaranteed cleanup with yield
+- ✅ Different scopes for different needs
+- ✅ Module scope = efficient browser reuse
+
+### Browser Launching
+- ✅ Chromium can be headless (fast) or headed (debugging)
+- ✅ Contexts = isolated sessions (like incognito)
+- ✅ Multiple pages = multiple tabs in same browser
+- ✅ slow_mo helps you see what's happening
+
+### Locators
+- ✅ get_by_role is BEST PRACTICE (accessibility)
+- ✅ get_by_label works ONLY with proper <label> elements
+- ✅ get_by_label FAILS with placeholders, aria-label
+- ✅ Use get_by_placeholder, get_by_role as alternatives
 
 ---
 
 ## 📊 Stats
-- **Total Tests Written**: 1
-- **Lines of Code**: 35
-- **Hours Invested**: 6
+- **Total Tests Written**: 8
+- **Hours Invested**: 26
 
