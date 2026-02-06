@@ -50,6 +50,6 @@
 ---
 
 ## 📊 Stats
-- **Total Tests Written**: 8
+- **Total Tests Written**: 14
 - **Hours Invested**: 34
 
