@@ -50,6 +50,10 @@
 ---
 
 ## 📊 Stats
-- **Total Tests Written**: 14
-- **Hours Invested**: 34
+- **Total Tests Written**: 22
+- **Hours Invested**: 42
+
+## Learning Resources & Guides
+- [HTML & CSS for Automation Testing](./HTML_CSS_FOR_AUTOMATION.MD)  
+  Complete guide to selectors, inspection, and stable locators in Playwright
 
