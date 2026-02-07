@@ -4,7 +4,7 @@
 ---
 
 ##  Table of Contents
-1. [HTML basic understading]
+1. [HTML basic understanding]
 2. [The 4 Core Concepts]
 3. [CSS Selectors]
 4. [Inspection Workflow]
