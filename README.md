@@ -50,8 +50,8 @@
 ---
 
 ## 📊 Stats
-- **Total Tests Written**: 22
-- **Hours Invested**: 42
+- **Total Tests Written**: 35
+- **Hours Invested**: 64
 
 ## Learning Resources & Guides
 - [HTML & CSS for Automation Testing](./HTML_CSS_FOR_AUTOMATION.MD)  
