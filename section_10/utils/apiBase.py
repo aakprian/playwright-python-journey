@@ -4,11 +4,15 @@ orders_payload = '{"orders": [{"country": "India", "productOrderedId": "6960eae1
 
 class APIUtils:
 
-    def get_token(self, playwright: Playwright):
+    def get_token(self, playwright: Playwright, user_email, user_password):
         api_request_context = playwright.request.new_context(base_url="https://rahulshettyacademy.com")
+
+        #build the data string using the parameters
+        login_data = f'{{"userEmail": "{user_email}", "userPassword": "{user_password}"}}'
+
         login_response = api_request_context.post(
             "/api/ecom/auth/login",
-            data='{"userEmail": "asen8203@alumni.sydney.edu.au", "userPassword": "Limelight@420"}',
+            data= login_data,
             headers={"Content-Type": "application/json"}  # <-- HYPHEN!
         )
 
@@ -21,8 +25,8 @@ class APIUtils:
         response_body = login_response.json()
         return response_body["token"]
 
-    def create_order(self, playwright: Playwright):
-        token = self.get_token(playwright)
+    def create_order(self, playwright: Playwright, user_email, user_password):
+        token = self.get_token(playwright, user_email, user_password)
         new_api_context = playwright.request.new_context(base_url="https://rahulshettyacademy.com")
         response = new_api_context.post(
             "/api/ecom/order/create-order",
