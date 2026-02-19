@@ -1,27 +1,7 @@
-image: mcr.microsoft.com/playwright/python:v1.48.0-jammy
-
-stages:
-  - test
-
-variables:
-  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
-
-cache:
-  paths:
-    - .cache/pip
-    - venv/
-
-before_script:
-  - python -m venv venv
-  - source venv/bin/activate
-  - pip install --upgrade pip
-  - pip install playwright pytest pytest-html
-  - playwright install
-
 test_job:
   stage: test
   script:
-    - pytest --html=report.html --self-contained-html --browser chromium
+    - pytest test_POM.py --html=report.html --self-contained-html
   artifacts:
     when: always
     paths:
