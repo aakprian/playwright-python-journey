@@ -1,5 +1,3 @@
-# GitLab CI/CD Pipeline for Playwright Python Tests
-
 image: mcr.microsoft.com/playwright/python:v1.48.0-jammy
 
 stages:
@@ -17,7 +15,7 @@ before_script:
   - python -m venv venv
   - source venv/bin/activate
   - pip install --upgrade pip
-  - pip install -r requirements.txt || pip install playwright pytest pytest-html
+  - pip install playwright pytest pytest-html
   - playwright install
 
 test_job:
@@ -29,5 +27,3 @@ test_job:
     paths:
       - report.html
     expire_in: 30 days
-  only:
-    - main
