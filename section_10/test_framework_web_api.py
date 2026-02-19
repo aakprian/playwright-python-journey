@@ -5,7 +5,7 @@ from playwright.sync_api import Playwright
 
 
 #json file -> utils -> access to test
-with open('data/credentials.json') as f:
+with open('section_10/data/credentials.json') as f:
     test_data = json.load(f)
     print(test_data)
     user_credentials_list = test_data["user_credentials"]

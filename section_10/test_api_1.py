@@ -1,6 +1,5 @@
 import pytest
 from playwright.sync_api import Playwright, expect
-import time
 
 from conftest import user_cred
 from utils.apiBase import APIUtils

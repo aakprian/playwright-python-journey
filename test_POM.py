@@ -1,21 +1,17 @@
 import pytest
 from playwright.sync_api import Playwright
-from section_10.conftest import user_credentials, user_cred
+from conftest import user_credentials, user_cred, browser_instance
 from page_objects.login import LoginPage
 
 
 
 @pytest.mark.parametrize("user_credentials", user_cred, indirect=True)
-def test_POM(playwright:Playwright, user_credentials):
+def test_POM(playwright:Playwright, browser_instance, user_credentials):
     user_name = user_credentials["user_email"]
     user_password = user_credentials["user_password"]
 
 
-    browser= playwright.chromium.launch(headless=False)
-    context = browser.new_context()
-    page = context.new_page()
-
-    login_page = LoginPage(page)
+    login_page = LoginPage(browser_instance)
 
     #login
     login_page.navigate()
@@ -32,6 +28,5 @@ def test_POM(playwright:Playwright, user_credentials):
         order_detail_page.get_delivery_details()
 
 
-    context.close()
-    browser.close()
+
 
