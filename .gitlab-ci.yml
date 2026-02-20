@@ -1,32 +1,27 @@
-# .gitlab-ci.yml
 stages:
   - test
 
 variables:
-  # Ensure Playwright runs in headless mode
-  PLAYWRIGHT_HEADLESS: "1"
-  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"  # Cache pip packages
+  PLAYWRIGHT_BROWSERS_PATH: 0  # Playwright uses system-installed browsers
 
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
-    - .cache/pip
-    - ~/.cache/ms-playwright
+    - .cache/pip  # pip cache
+    - node_modules/  # if using node/browser dependencies
 
-playwright_tests:
-  stage: test
+playwright-tests:
   image: mcr.microsoft.com/playwright/python:v1.58.0-jammy
+  stage: test
   before_script:
-    # Upgrade pip and install requirements
-    - pip install --upgrade pip
+    - python -m pip install --upgrade pip
     - pip install -r requirements.txt
-    # Install missing dependencies for Linux
-    - playwright install-deps
-    # Download all browsers
-    - playwright install
+    - playwright install-deps  # system dependencies for browsers
+    - playwright install        # installs browser binaries
   script:
-    # Run pytest with HTML report
-    - pytest test_POM.py --html=report.html --self-contained-html
+    # run tests in headless mode; generate HTML report
+    - pytest test_POM.py --html=report.html --self-contained-html --browser_name=chrome --url_name=https://example.com
   artifacts:
     when: always
     paths:
