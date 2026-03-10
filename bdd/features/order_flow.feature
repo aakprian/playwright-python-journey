@@ -1,15 +1,11 @@
-Feature: Get Delivery Details
-  Tests to gets delivery details
+Feature: Order Flow
+  As a registered user
+  I want to place and verify my orders
+  So that I can confirm my purchases are tracked correctly
 
-  Scenario Outline: get delivery details of selected orderID
-    Given
-    And the user is on landing page
-    When I login into portal with <username> and <password>
-    And nagivate to orders page
-    And select the order
-    Then order msg is succesfully displayed
-    Examples:
-      | username             | password |
-      |rahulshetty@gmail.com | Iamking@000|
-
-
+  Scenario: Verify order confirmation message after login
+    Given the user is on the login page
+    When I login with valid credentials
+    And I navigate to the orders page
+    And I select the first order
+    Then the order confirmation message is displayed
