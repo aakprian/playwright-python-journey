@@ -1,29 +1,29 @@
+image: mcr.microsoft.com/playwright/python:v1.58.0-jammy
+
 stages:
   - test
 
 variables:
-  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"  # Cache pip packages
-  PLAYWRIGHT_BROWSERS_PATH: 0  # Playwright uses system-installed browsers
+  BROWSER: "chrome"
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
 
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
-    - .cache/pip  # pip cache
-    - node_modules/  # if using node/browser dependencies
+    - .cache/pip
 
-playwright-tests:
-  image: mcr.microsoft.com/playwright/python:v1.58.0-jammy
+before_script:
+  - python -m pip install --upgrade pip
+  - pip install -r requirements.txt
+  - playwright install-deps
+  - playwright install
+
+run_tests:
   stage: test
-  before_script:
-    - python -m pip install --upgrade pip
-    - pip install -r requirements.txt
-    - playwright install-deps  # system dependencies for browsers
-    - playwright install        # installs browser binaries
   script:
-    # run tests in headless mode; generate HTML report
-    - pytest test_POM.py --html=report.html --self-contained-html --browser_name=chrome --url_name=https://example.com
+    - pytest tests/ -v --tb=short --browser_name=$BROWSER
   artifacts:
     when: always
     paths:
-      - report.html
-    expire_in: 1 week
+      - reports/
+    expire_in: 7 days
